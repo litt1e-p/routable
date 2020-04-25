@@ -17,9 +17,10 @@ mixins: [Routable]
 ## Usage
 
 
-- `__rtb_erase(args, c = false, px = 'sl,', qy = 'gs_l')`
- eg. to erase query params
+- `__rtb_erase`
   ```
+  this.__rtb_erase((args, c = false, px = 'sl,', qy = 'gs_l'))
+  eg. to erase query params
   this.__rtb_erase({
     dto: encodeURIComponent(JSON.stringify({a: 1, b: 'xx'}))
   })
