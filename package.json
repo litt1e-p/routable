@@ -1,0 +1,33 @@
+{
+  "name": "@litt1e-p/routable",
+  "version": "0.0.1",
+  "description": "link tool of vue router which maybe exists mess query params",
+  "config": {
+    "libName": "routable"
+  },
+  "keywords": [
+    "routable",
+    "route",
+    "router",
+    "query",
+    "indexDb",
+    "params"
+  ],
+  "author": "litt1e-p",
+  "license": "MIT",
+  "main": "dist/routable.umd.js",
+  "module": "dist/routable.esm.js",
+  "unpkg": "dist/routable.min.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/litt1e-p/routable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/litt1e-p/routable/issues"
+  },
+  "homepage": "https://github.com/litt1e-p/routable#readme",
+  "dependencies": {
+    "vue": "^2.6.10",
+    "idb": "^5.0.2"
+  }
+}
