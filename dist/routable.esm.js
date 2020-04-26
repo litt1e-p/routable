@@ -419,7 +419,7 @@ var __rtb_utils = {
 };
 
 var script = {
-  name: '__litt1e-p_routable',
+  name: 'litt1epRoutable',
   methods: {
     __rtb_set(k, v) {
       return __rtb_utils.__rtb_setSS.apply(this, [k, v]);
