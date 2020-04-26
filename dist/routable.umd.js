@@ -425,7 +425,7 @@
   };
 
   var script = {
-    name: '_@litt1e-p/routable',
+    name: '__litt1e-p_routable',
     methods: {
       __rtb_set(k, v) {
         return __rtb_utils.__rtb_setSS.apply(this, [k, v]);
@@ -438,7 +438,7 @@
       __rtb_erase(args) {
         var c = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
         var px = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'sl,';
-        var qy = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'gs_l';
+        var qy = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'sf_l';
 
         if (!args || args.length <= 0) {
           return '';
@@ -474,7 +474,7 @@
                   c = _arguments.length > 1 && _arguments[1] !== undefined ? _arguments[1] : false;
                   px = _arguments.length > 2 && _arguments[2] !== undefined ? _arguments[2] : 'sl,';
                   l = _arguments.length > 3 && _arguments[3] !== undefined ? _arguments[3] : -21;
-                  qy = _arguments.length > 4 && _arguments[4] !== undefined ? _arguments[4] : 'gs_l';
+                  qy = _arguments.length > 4 && _arguments[4] !== undefined ? _arguments[4] : 'sf_l';
 
                   if (!(!args || Object.keys(args).length <= 0 || !args.hasOwnProperty(qy))) {
                     _context.next = 6;
@@ -529,7 +529,7 @@
                 case 0:
                   px = _arguments2.length > 1 && _arguments2[1] !== undefined ? _arguments2[1] : 'sl,';
                   l = _arguments2.length > 2 && _arguments2[2] !== undefined ? _arguments2[2] : -21;
-                  qy = _arguments2.length > 3 && _arguments2[3] !== undefined ? _arguments2[3] : 'gs_l';
+                  qy = _arguments2.length > 3 && _arguments2[3] !== undefined ? _arguments2[3] : 'sf_l';
                   _context2.next = 5;
                   return __rtb_utils.__rtb_ssKeys();
 
@@ -597,12 +597,12 @@
       __rtb_clear() {
         var _arguments3 = arguments;
         return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-          var rer, px, l, sa, sl, rs, b, m, i, e;
+          var exception, px, l, sa, sl, rs, b, m, i, e;
           return regeneratorRuntime.wrap(function _callee3$(_context3) {
             while (1) {
               switch (_context3.prev = _context3.next) {
                 case 0:
-                  rer = _arguments3.length > 0 && _arguments3[0] !== undefined ? _arguments3[0] : 'historyBack';
+                  exception = _arguments3.length > 0 && _arguments3[0] !== undefined ? _arguments3[0] : '';
                   px = _arguments3.length > 1 && _arguments3[1] !== undefined ? _arguments3[1] : 'sl,';
                   l = _arguments3.length > 2 && _arguments3[2] !== undefined ? _arguments3[2] : -21;
                   _context3.next = 5;
@@ -621,11 +621,24 @@
                   return _context3.abrupt("return", rs);
 
                 case 10:
-                  _context3.next = 12;
-                  return __rtb_utils.__rtb_getSS(rer);
+                  if (!exception) {
+                    _context3.next = 16;
+                    break;
+                  }
 
-                case 12:
-                  b = _context3.sent;
+                  _context3.next = 13;
+                  return __rtb_utils.__rtb_getSS(exception);
+
+                case 13:
+                  _context3.t0 = _context3.sent;
+                  _context3.next = 17;
+                  break;
+
+                case 16:
+                  _context3.t0 = '';
+
+                case 17:
+                  b = _context3.t0;
 
                   if (b) {
                     m = px + btoa(b.slice(l));
@@ -641,14 +654,18 @@
 
                   return _context3.abrupt("return", true);
 
-                case 16:
+                case 21:
                 case "end":
                   return _context3.stop();
               }
             }
           }, _callee3);
         }))();
-      }
+      } // },
+      // beforeRouteLeave (to, from, next) {
+      //   console.info('mxins leave')
+      //   next()
+
 
     }
   };
