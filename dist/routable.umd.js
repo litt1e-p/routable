@@ -438,7 +438,7 @@
       __rtb_erase(args) {
         var c = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
         var px = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'sl,';
-        var qy = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'sf_l';
+        var qy = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'gs_l';
 
         if (!args || args.length <= 0) {
           return '';
@@ -474,7 +474,7 @@
                   c = _arguments.length > 1 && _arguments[1] !== undefined ? _arguments[1] : false;
                   px = _arguments.length > 2 && _arguments[2] !== undefined ? _arguments[2] : 'sl,';
                   l = _arguments.length > 3 && _arguments[3] !== undefined ? _arguments[3] : -21;
-                  qy = _arguments.length > 4 && _arguments[4] !== undefined ? _arguments[4] : 'sf_l';
+                  qy = _arguments.length > 4 && _arguments[4] !== undefined ? _arguments[4] : 'gs_l';
 
                   if (!(!args || Object.keys(args).length <= 0 || !args.hasOwnProperty(qy))) {
                     _context.next = 6;
@@ -529,7 +529,7 @@
                 case 0:
                   px = _arguments2.length > 1 && _arguments2[1] !== undefined ? _arguments2[1] : 'sl,';
                   l = _arguments2.length > 2 && _arguments2[2] !== undefined ? _arguments2[2] : -21;
-                  qy = _arguments2.length > 3 && _arguments2[3] !== undefined ? _arguments2[3] : 'sf_l';
+                  qy = _arguments2.length > 3 && _arguments2[3] !== undefined ? _arguments2[3] : 'gs_l';
                   _context2.next = 5;
                   return __rtb_utils.__rtb_ssKeys();
 
