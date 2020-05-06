@@ -77,10 +77,10 @@
   function proxyProperties(ProxyClass, targetProp, properties) {
     properties.forEach(function (prop) {
       Object.defineProperty(ProxyClass.prototype, prop, {
-        get: function () {
+        get: function get() {
           return this[targetProp][prop];
         },
-        set: function (val) {
+        set: function set(val) {
           this[targetProp][prop] = val;
         }
       });
@@ -258,6 +258,32 @@
         });
       });
     };
+  }); // polyfill getAllKeys
+
+  [Index, ObjectStore].forEach(function (Constructor) {
+    if (Constructor.prototype.getAllKeys) return;
+
+    Constructor.prototype.getAllKeys = function (query, count) {
+      var instance = this;
+      var items = [];
+      return new Promise(function (resolve) {
+        instance.iterateCursor(query, function (cursor) {
+          if (!cursor) {
+            resolve(items);
+            return;
+          }
+
+          items.push(cursor.key);
+
+          if (count !== undefined && items.length == count) {
+            resolve(items);
+            return;
+          }
+
+          cursor.continue();
+        });
+      });
+    };
   });
   function openDb(name, version, upgradeCallback) {
     var p = promisifyRequestCall(indexedDB, 'open', [name, version]);
@@ -275,6 +301,9 @@
       return new DB(db);
     });
   }
+
+  //   throw new Error('Fatal error: the browser does not support indexedDb');
+  // }
 
   if (!('indexedDB' in window)) {
     throw new Error('fatal error: the browser does not support indexedDb');
@@ -419,6 +448,29 @@
             }
           }
         }, _callee5);
+      }))();
+    },
+
+    __rtb_ssVals() {
+      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+        var db;
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.next = 2;
+                return _db;
+
+              case 2:
+                db = _context6.sent;
+                return _context6.abrupt("return", db.transaction(_tbName).objectStore(_tbName).getAll());
+
+              case 4:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
       }))();
     }
 
@@ -660,6 +712,48 @@
               }
             }
           }, _callee3);
+        }))();
+      },
+
+      __rtb_allKeys() {
+        return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+          return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  _context4.next = 2;
+                  return __rtb_utils.__rtb_ssKeys();
+
+                case 2:
+                  return _context4.abrupt("return", _context4.sent);
+
+                case 3:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          }, _callee4);
+        }))();
+      },
+
+      __rtb_allKeys() {
+        return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+          return regeneratorRuntime.wrap(function _callee5$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  _context5.next = 2;
+                  return __rtb_utils.__rtb_ssVals();
+
+                case 2:
+                  return _context5.abrupt("return", _context5.sent);
+
+                case 3:
+                case "end":
+                  return _context5.stop();
+              }
+            }
+          }, _callee5);
         }))();
       } // },
       // beforeRouteLeave (to, from, next) {
