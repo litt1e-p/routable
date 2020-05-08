@@ -736,7 +736,7 @@
         }))();
       },
 
-      __rtb_allKeys() {
+      __rtb_allVals() {
         return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
           return regeneratorRuntime.wrap(function _callee5$(_context5) {
             while (1) {
@@ -755,11 +755,30 @@
             }
           }, _callee5);
         }))();
-      } // },
-      // beforeRouteLeave (to, from, next) {
-      //   console.info('mxins leave')
-      //   next()
+      },
 
+      __rtb_route() {
+        var u = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+        return new Promise(function (resolve, reject) {
+          if (!u || typeof u !== 'string') {
+            return reject(new Error('Invalid __rtb_route params'));
+          }
+
+          if ('URLSearchParams' in window) {
+            // Browser supports URLSearchParams
+            var url = new URL(u);
+            var pas = Object.fromEntries(new URLSearchParams(url.search));
+            var path = url.pathname;
+            var query = pas;
+            return resolve({
+              path,
+              query
+            });
+          } else {
+            return reject(new Error('Browser does not supports URLSearchParams'));
+          }
+        });
+      }
 
     }
   };
