@@ -29,7 +29,7 @@ mixins: [Routable]
   this.__rtb_erase({
     dto: encodeURIComponent(JSON.stringify({a: 1, b: 'xx'}))
   }, true)
-  // output: 'gs_l=sl,w.A.D.M.w.A.z.N.h.F.T.L%3A0,8,3,6,8,1,9,9,7,7,8'
+  // output: 'gs_l=sl,1.e.B.F.U.q.9.4.c'
   ```
 - `__rtb_record`
   ```
@@ -38,13 +38,13 @@ mixins: [Routable]
   this.__rtb_record({gs_l: JTdCJTIyZHRvJTIyJTNBJTIyJTI1N0IlMjUyMmElMjUyMiUyNTNBMSUyNTJDJTI1MjJiJTI1MjIlMjUzQSUyNTIyeHglMjUyMiUyNTdEJTIyJTdE})
   // output: {a: 1, b: 'xx'}
   // or
-  this.__rtb_record({gs_l: sl,w.A.D.M.w.A.z.N.h.F.T.L%3A0,8,3,6,8,1,9,9,7,7,8}, true)
+  this.__rtb_record({gs_l: 'sl,1.e.B.F.U.q.9.4.c'}, true)
   output: {a: 1, b: 'xx'}
   ```
 - `__rtb_flush`
   ```
   eg. flush a key
-  this.__rtb_flush({gs_l: sl,w.A.D.M.w.A.z.N.h.F.T.L%3A0,8,3,6,8,1,9,9,7,7,8})
+  this.__rtb_flush({gs_l: 'sl,1.e.B.F.U.q.9.4.c'})
   ```
 - `__rtb_clear`
   ```
