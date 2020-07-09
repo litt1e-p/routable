@@ -1,6 +1,6 @@
 {
   "name": "@litt1e-p/routable",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "link tool of vue router which maybe exists mess query params",
   "config": {
     "libName": "routable"
