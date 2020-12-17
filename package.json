@@ -1,6 +1,6 @@
 {
   "name": "@litt1e-p/routable",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "link tool of vue router which maybe exists mess query params",
   "config": {
     "libName": "routable"
@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/litt1e-p/routable#readme",
   "dependencies": {
-    "vue": "^2.6.10",
-    "core-js": "^3.8.1"
+    "vue": "^2.6.12",
+    "core-js": "^3.8.1",
+    "regenerator-runtime": "^0.13.7"
   }
 }
