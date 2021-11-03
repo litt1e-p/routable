@@ -1,6 +1,7 @@
 # Routable
 
-link tool of vue router which maybe exists mess query params
+link tool of vue2.x router which maybe exists mess query params
+> [vue 3.x supports](https://github.com/litt1e-p/routable/tree/next)
 
 ## Installation
 
