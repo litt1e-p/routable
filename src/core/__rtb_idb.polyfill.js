@@ -242,7 +242,6 @@ proxyMethods(DB, '_db', IDBDatabase, [
 ['openCursor', 'openKeyCursor'].forEach(function(funcName) {
   [ObjectStore, Index].forEach(function(Constructor) {
     if (!(funcName in Constructor.prototype)) return;
-
     Constructor.prototype[funcName.replace('open', 'iterate')] = function() {
       var args = toArray(arguments);
       var callback = args[args.length - 1];

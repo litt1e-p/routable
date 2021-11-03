@@ -1,6 +1,6 @@
 {
   "name": "@litt1e-p/routable",
-  "version": "0.2.7",
+  "version": "3.0.0",
   "description": "link tool of vue2.x router which maybe exists mess query params",
   "config": {
     "libName": "routable"
@@ -25,9 +25,12 @@
     "url": "https://github.com/litt1e-p/routable/issues"
   },
   "homepage": "https://github.com/litt1e-p/routable#readme",
-  "dependencies": {
-    "vue": "^2.6.14",
-    "core-js": "^3.19.1",
-    "regenerator-runtime": "^0.13.9"
+  "peerDependencies": {
+    "vue": "^3.2.20",
+    "idb": "3.0.2",
+    "indexeddb-getall-shim": "^1.3.6",
+    "url-polyfill": "^1.1.12",
+    "core-js": "^3.8.1",
+    "regenerator-runtime": "^0.13.7"
   }
 }

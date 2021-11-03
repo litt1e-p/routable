@@ -1,1 +1,487 @@
-function t(e){return(t="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function r(e,t,r,n,o,i,a){try{var s=e[i](a),u=s.value}catch(e){return void r(e)}s.done?t(u):Promise.resolve(u).then(n,o)}function n(e){return function(){var t=this,n=arguments;return new Promise((function(o,i){var a=e.apply(t,n);function s(e){r(a,o,i,s,u,"next",e)}function u(e){r(a,o,i,s,u,"throw",e)}s(void 0)}))}}function o(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){if("undefined"==typeof Symbol||!(Symbol.iterator in Object(e)))return;var r=[],n=!0,o=!1,i=void 0;try{for(var a,s=e[Symbol.iterator]();!(n=(a=s.next()).done)&&(r.push(a.value),!t||r.length!==t);n=!0);}catch(e){o=!0,i=e}finally{try{n||null==s.return||s.return()}finally{if(o)throw i}}return r}(e,t)||a(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function i(e){return function(e){if(Array.isArray(e))return s(e)}(e)||function(e){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e))return Array.from(e)}(e)||a(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function a(e,t){if(e){if("string"==typeof e)return s(e,t);var r=Object.prototype.toString.call(e).slice(8,-1);return"Object"===r&&e.constructor&&(r=e.constructor.name),"Map"===r||"Set"===r?Array.from(e):"Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)?s(e,t):void 0}}function s(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=new Array(t);r<t;r++)n[r]=e[r];return n}var u="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{};function c(e){return Array.prototype.slice.call(e)}function f(e){return new Promise((function(t,r){e.onsuccess=function(){t(e.result)},e.onerror=function(){r(e.error)}}))}function l(e,t,r){var n,o=new Promise((function(o,i){f(n=e[t].apply(e,r)).then(o,i)}));return o.request=n,o}function p(e,t,r){var n=l(e,t,r);return n.then((function(e){if(e)return new g(e,n.request)}))}function h(e,t,r){r.forEach((function(r){Object.defineProperty(e.prototype,r,{get:function(){return this[t][r]},set:function(e){this[t][r]=e}})}))}function d(e,t,r,n){n.forEach((function(n){n in r.prototype&&(e.prototype[n]=function(){return l(this[t],n,arguments)})}))}function _(e,t,r,n){n.forEach((function(n){n in r.prototype&&(e.prototype[n]=function(){return this[t][n].apply(this[t],arguments)})}))}function b(e,t,r,n){n.forEach((function(n){n in r.prototype&&(e.prototype[n]=function(){return p(this[t],n,arguments)})}))}function y(e){this._index=e}function g(e,t){this._cursor=e,this._request=t}function v(e){this._store=e}function m(e){this._tx=e,this.complete=new Promise((function(t,r){e.oncomplete=function(){t()},e.onerror=function(){r(e.error)},e.onabort=function(){r(e.error)}}))}function w(e,t,r){this._db=e,this.oldVersion=t,this.transaction=new m(r)}function S(e){this._db=e}if(function(t){var r,n,o,i,a;if(o=t.IDBObjectStore||t.webkitIDBObjectStore||t.mozIDBObjectStore||t.msIDBObjectStore,n=t.IDBIndex||t.webkitIDBIndex||t.mozIDBIndex||t.msIDBIndex,void 0!==o&&void 0!==n){var s=!1;"undefined"!=typeof WorkerGlobalScope&&(navigator.userAgent.indexOf("Safari/602")>=0||navigator.userAgent.indexOf("Safari/603")>=0)&&(s=!0),(s||void 0===o.prototype.getAll||void 0===n.prototype.getAll||void 0===o.prototype.getAllKeys||void 0===n.prototype.getAllKeys)&&(i=function(){this.result=null,this.error=null,this.source=null,this.transaction=null,this.readyState="pending",this.onsuccess=null,this.onerror=null,this.toString=function(){return"[object IDBRequest]"},this._listeners={success:[],error:[]};var e=this;this.addEventListener=function(t,r){e._listeners[t]&&e._listeners[t].push(r)},this.removeEventListener=function(t,r){e._listeners[t]&&(e._listeners[t]=e._listeners[t].filter((function(e){return r!==e})))}},r=function(e){this.type=e,this.target=null,this.currentTarget=null,this.NONE=0,this.CAPTURING_PHASE=1,this.AT_TARGET=2,this.BUBBLING_PHASE=3,this.eventPhase=this.NONE,this.stopPropagation=function(){console.log("stopPropagation not implemented in IndexedDB-getAll-shim")},this.stopImmediatePropagation=function(){console.log("stopImmediatePropagation not implemented in IndexedDB-getAll-shim")},this.bubbles=!1,this.cancelable=!1,this.preventDefault=function(){console.log("preventDefault not implemented in IndexedDB-getAll-shim")},this.defaultPrevented=!1,this.isTrusted=!1,this.timestamp=Date.now()},a=function(t,n){return function(o,a){var s,u,c;return o=void 0!==o?o:null,u=new i,c=[],(s=this.openCursor(o)).onsuccess=function(e){var o,i,s,f;if((o=e.target.result)&&(f="value"===n?o.value:"index"===t?o.primaryKey:o.key,c.push(f),void 0===a||c.length<a))o.continue();else if(u.result=c,(i=new r("success")).target={readyState:"done",result:c},"function"==typeof u.onsuccess&&u.onsuccess(i),u._listeners.success.length>0)for(s=0;s<u._listeners.success.length;s++)u._listeners.success[s](i)},s.onerror=function(t){var r;if(console.log("IndexedDB-getAll-shim error when getting data:",t.target.error),"function"==typeof u.onerror&&u.onerror(t),u._listeners.error.length>0)for(r=0;r<u._listeners.error.length;r++)u._listeners.error[r](e)},u}},(s||void 0===o.prototype.getAll)&&(o.prototype.getAll=a("objectStore","value")),(s||void 0===n.prototype.getAll)&&(n.prototype.getAll=a("index","value")),(s||void 0===o.prototype.getAllKeys)&&(o.prototype.getAllKeys=a("objectStore","key")),(s||void 0===n.prototype.getAllKeys)&&(n.prototype.getAllKeys=a("index","key")))}}("undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope?self:void 0!==u?u:Function("return this;")()),h(y,"_index",["name","keyPath","multiEntry","unique"]),d(y,"_index",IDBIndex,["get","getKey","getAll","getAllKeys","count"]),b(y,"_index",IDBIndex,["openCursor","openKeyCursor"]),h(g,"_cursor",["direction","key","primaryKey","value"]),d(g,"_cursor",IDBCursor,["update","delete"]),["advance","continue","continuePrimaryKey"].forEach((function(e){e in IDBCursor.prototype&&(g.prototype[e]=function(){var t=this,r=arguments;return Promise.resolve().then((function(){return t._cursor[e].apply(t._cursor,r),f(t._request).then((function(e){if(e)return new g(e,t._request)}))}))})})),v.prototype.createIndex=function(){return new y(this._store.createIndex.apply(this._store,arguments))},v.prototype.index=function(){return new y(this._store.index.apply(this._store,arguments))},h(v,"_store",["name","keyPath","indexNames","autoIncrement"]),d(v,"_store",IDBObjectStore,["put","add","delete","clear","get","getAll","getKey","getAllKeys","count"]),b(v,"_store",IDBObjectStore,["openCursor","openKeyCursor"]),_(v,"_store",IDBObjectStore,["deleteIndex"]),m.prototype.objectStore=function(){return new v(this._tx.objectStore.apply(this._tx,arguments))},h(m,"_tx",["objectStoreNames","mode"]),_(m,"_tx",IDBTransaction,["abort"]),w.prototype.createObjectStore=function(){return new v(this._db.createObjectStore.apply(this._db,arguments))},h(w,"_db",["name","version","objectStoreNames"]),_(w,"_db",IDBDatabase,["deleteObjectStore","close"]),S.prototype.transaction=function(){return new m(this._db.transaction.apply(this._db,arguments))},h(S,"_db",["name","version","objectStoreNames"]),_(S,"_db",IDBDatabase,["close"]),["openCursor","openKeyCursor"].forEach((function(e){[v,y].forEach((function(t){e in t.prototype&&(t.prototype[e.replace("open","iterate")]=function(){var t=c(arguments),r=t[t.length-1],n=this._store||this._index,o=n[e].apply(n,t.slice(0,-1));o.onsuccess=function(){r(o.result)}})}))})),[y,v].forEach((function(e){e.prototype.getAll||(e.prototype.getAll=function(e,t){var r=this,n=[];return new Promise((function(o){r.iterateCursor(e,(function(e){e?(n.push(e.value),void 0===t||n.length!=t?e.continue():o(n)):o(n)}))}))})})),[y,v].forEach((function(e){e.prototype.getAllKeys||(e.prototype.getAllKeys=function(e,t){var r=this,n=[];return new Promise((function(o){r.iterateCursor(e,(function(e){e?(n.push(e.key),void 0===t||n.length!=t?e.continue():o(n)):o(n)}))}))})})),!("indexedDB"in window))throw new Error("Fatal error: the browser does not support indexedDb");var x,j,E,R="__rtb_db_table",O=(x=function(e){e.createObjectStore(R)},j=l(indexedDB,"open",["__rtb_db_routable",1]),(E=j.request)&&(E.onupgradeneeded=function(e){x&&x(new w(E.result,e.oldVersion,E.transaction))}),j.then((function(e){return new S(e)}))),P={__rtb_setSS:function(e,t){return n(regeneratorRuntime.mark((function r(){var n,o;return regeneratorRuntime.wrap((function(r){for(;;)switch(r.prev=r.next){case 0:return r.next=2,O;case 2:return n=r.sent,(o=n.transaction(R,"readwrite")).objectStore(R).put(t,e),r.abrupt("return",o.complete);case 6:case"end":return r.stop()}}),r)})))()},__rtb_getSS:function(e){return n(regeneratorRuntime.mark((function t(){var r;return regeneratorRuntime.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,O;case 2:return r=t.sent,t.abrupt("return",r.transaction(R).objectStore(R).get(e));case 4:case"end":return t.stop()}}),t)})))()},__rtb_delSS:function(e){return n(regeneratorRuntime.mark((function t(){var r,n;return regeneratorRuntime.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,O;case 2:return r=t.sent,(n=r.transaction(R,"readwrite")).objectStore(R).delete(e),t.abrupt("return",n.complete);case 6:case"end":return t.stop()}}),t)})))()},__rtb_clearSS:function(){return n(regeneratorRuntime.mark((function e(){var t,r;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,O;case 2:return t=e.sent,(r=t.transaction(R,"readwrite")).objectStore(R).clear(),e.abrupt("return",r.complete);case 6:case"end":return e.stop()}}),e)})))()},__rtb_ssKeys:function(){return n(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,O;case 2:return t=e.sent,e.abrupt("return",t.transaction(R).objectStore(R).getAllKeys());case 4:case"end":return e.stop()}}),e)})))()},__rtb_ssVals:function(){return n(regeneratorRuntime.mark((function e(){var t;return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,O;case 2:return t=e.sent,e.abrupt("return",t.transaction(R).objectStore(R).getAll());case 4:case"end":return e.stop()}}),e)})))()}},I={_gen:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:32;return this._ren((new Date).getTime().toString(e))},_ren:function(e){if(!e||!e.length)return e;for(var t=e.split(""),r=[];t.length;){var n=t.shift();r.unshift(Math.random()>.6?n.toUpperCase():n)}return r.join("")},_enc:function(e,t){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:".";return e+t.split("").reverse().join(r)},_dec:function(e,t){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:".";return e+this._enb(t.slice(e.length).split(r).reverse().join(""))},_enp:function(e){return btoa(encodeURIComponent(JSON.stringify(e)))},_dep:function(e){return JSON.parse(decodeURIComponent(atob(e)))},_enb:function(e){return btoa(e)},_deb:function(e){return atob(e)}};function A(e){return"function"==typeof Object.fromEntries?Object.fromEntries(e):i(e).reduce((function(e,t){var r=o(t,2),n=r[0],i=r[1];return e[n]=i,e}),{})}function k(e,t,r,n,o,i,a,s,u,c){"boolean"!=typeof a&&(u=s,s=a,a=!1);var f,l="function"==typeof r?r.options:r;if(e&&e.render&&(l.render=e.render,l.staticRenderFns=e.staticRenderFns,l._compiled=!0,o&&(l.functional=!0)),n&&(l._scopeId=n),i?(f=function(e){(e=e||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(e=__VUE_SSR_CONTEXT__),t&&t.call(this,u(e)),e&&e._registeredComponents&&e._registeredComponents.add(i)},l._ssrRegister=f):t&&(f=a?function(e){t.call(this,c(e,this.$root.$options.shadowRoot))}:function(e){t.call(this,s(e))}),f)if(l.functional){var p=l.render;l.render=function(e,t){return f.call(t),p(e,t)}}else{var h=l.beforeCreate;l.beforeCreate=h?[].concat(h,f):[f]}return r}!function(e){var r=function(){try{return!!Symbol.iterator}catch(e){return!1}}(),n=function(e){var t={next:function(){var t=e.shift();return{done:void 0===t,value:t}}};return r&&(t[Symbol.iterator]=function(){return t}),t},o=function(e){return encodeURIComponent(e).replace(/%20/g,"+")},i=function(e){return decodeURIComponent(String(e).replace(/\+/g," "))};(function(){try{var t=e.URLSearchParams;return"a=1"===new t("?a=1").toString()&&"function"==typeof t.prototype.set&&"function"==typeof t.prototype.entries}catch(e){return!1}})()||function(){var i=function e(r){Object.defineProperty(this,"_entries",{writable:!0,value:{}});var n=t(r);if("undefined"===n);else if("string"===n)""!==r&&this._fromString(r);else if(r instanceof e){var o=this;r.forEach((function(e,t){o.append(t,e)}))}else{if(null===r||"object"!==n)throw new TypeError("Unsupported input's type for URLSearchParams");if("[object Array]"===Object.prototype.toString.call(r))for(var i=0;i<r.length;i++){var a=r[i];if("[object Array]"!==Object.prototype.toString.call(a)&&2===a.length)throw new TypeError("Expected [string, any] as entry at index "+i+" of URLSearchParams's input");this.append(a[0],a[1])}else for(var s in r)r.hasOwnProperty(s)&&this.append(s,r[s])}},a=i.prototype;a.append=function(e,t){e in this._entries?this._entries[e].push(String(t)):this._entries[e]=[String(t)]},a.delete=function(e){delete this._entries[e]},a.get=function(e){return e in this._entries?this._entries[e][0]:null},a.getAll=function(e){return e in this._entries?this._entries[e].slice(0):[]},a.has=function(e){return e in this._entries},a.set=function(e,t){this._entries[e]=[String(t)]},a.forEach=function(e,t){var r;for(var n in this._entries)if(this._entries.hasOwnProperty(n)){r=this._entries[n];for(var o=0;o<r.length;o++)e.call(t,r[o],n,this)}},a.keys=function(){var e=[];return this.forEach((function(t,r){e.push(r)})),n(e)},a.values=function(){var e=[];return this.forEach((function(t){e.push(t)})),n(e)},a.entries=function(){var e=[];return this.forEach((function(t,r){e.push([r,t])})),n(e)},r&&(a[Symbol.iterator]=a.entries),a.toString=function(){var e=[];return this.forEach((function(t,r){e.push(o(r)+"="+o(t))})),e.join("&")},e.URLSearchParams=i}();var a=e.URLSearchParams.prototype;"function"!=typeof a.sort&&(a.sort=function(){var e=this,t=[];this.forEach((function(r,n){t.push([n,r]),e._entries||e.delete(n)})),t.sort((function(e,t){return e[0]<t[0]?-1:e[0]>t[0]?1:0})),e._entries&&(e._entries={});for(var r=0;r<t.length;r++)this.append(t[r][0],t[r][1])}),"function"!=typeof a._fromString&&Object.defineProperty(a,"_fromString",{enumerable:!1,configurable:!1,writable:!1,value:function(e){if(this._entries)this._entries={};else{var t=[];this.forEach((function(e,r){t.push(r)}));for(var r=0;r<t.length;r++)this.delete(t[r])}var n,o=(e=e.replace(/^\?/,"")).split("&");for(r=0;r<o.length;r++)n=o[r].split("="),this.append(i(n[0]),n.length>1?i(n[1]):"")}})}(void 0!==u?u:"undefined"!=typeof window?window:"undefined"!=typeof self?self:u),function(e){if(function(){try{var t=new e.URL("b","http://a");return t.pathname="c d","http://a/c%20d"===t.href&&t.searchParams}catch(e){return!1}}()||function(){var t=e.URL,r=function(t,r){"string"!=typeof t&&(t=String(t)),r&&"string"!=typeof r&&(r=String(r));var n,o=document;if(r&&(void 0===e.location||r!==e.location.href)){r=r.toLowerCase(),(n=(o=document.implementation.createHTMLDocument("")).createElement("base")).href=r,o.head.appendChild(n);try{if(0!==n.href.indexOf(r))throw new Error(n.href)}catch(e){throw new Error("URL unable to set base "+r+" due to "+e)}}var i=o.createElement("a");i.href=t,n&&(o.body.appendChild(i),i.href=i.href);var a=o.createElement("input");if(a.type="url",a.value=t,":"===i.protocol||!/:/.test(i.href)||!a.checkValidity()&&!r)throw new TypeError("Invalid URL");Object.defineProperty(this,"_anchorElement",{value:i});var s=new e.URLSearchParams(this.search),u=!0,c=!0,f=this;["append","delete","set"].forEach((function(e){var t=s[e];s[e]=function(){t.apply(s,arguments),u&&(c=!1,f.search=s.toString(),c=!0)}})),Object.defineProperty(this,"searchParams",{value:s,enumerable:!0});var l=void 0;Object.defineProperty(this,"_updateSearchParams",{enumerable:!1,configurable:!1,writable:!1,value:function(){this.search!==l&&(l=this.search,c&&(u=!1,this.searchParams._fromString(this.search),u=!0))}})},n=r.prototype;["hash","host","hostname","port","protocol"].forEach((function(e){!function(e){Object.defineProperty(n,e,{get:function(){return this._anchorElement[e]},set:function(t){this._anchorElement[e]=t},enumerable:!0})}(e)})),Object.defineProperty(n,"search",{get:function(){return this._anchorElement.search},set:function(e){this._anchorElement.search=e,this._updateSearchParams()},enumerable:!0}),Object.defineProperties(n,{toString:{get:function(){var e=this;return function(){return e.href}}},href:{get:function(){return this._anchorElement.href.replace(/\?$/,"")},set:function(e){this._anchorElement.href=e,this._updateSearchParams()},enumerable:!0},pathname:{get:function(){return this._anchorElement.pathname.replace(/(^\/?)/,"/")},set:function(e){this._anchorElement.pathname=e},enumerable:!0},origin:{get:function(){var e={"http:":80,"https:":443,"ftp:":21}[this._anchorElement.protocol],t=this._anchorElement.port!=e&&""!==this._anchorElement.port;return this._anchorElement.protocol+"//"+this._anchorElement.hostname+(t?":"+this._anchorElement.port:"")},enumerable:!0},password:{get:function(){return""},set:function(e){},enumerable:!0},username:{get:function(){return""},set:function(e){},enumerable:!0}}),r.createObjectURL=function(e){return t.createObjectURL.apply(t,arguments)},r.revokeObjectURL=function(e){return t.revokeObjectURL.apply(t,arguments)},e.URL=r}(),void 0!==e.location&&!("origin"in e.location)){var t=function(){return e.location.protocol+"//"+e.location.hostname+(e.location.port?":"+e.location.port:"")};try{Object.defineProperty(e.location,"origin",{get:t,enumerable:!0})}catch(r){setInterval((function(){e.location.origin=t()}),100)}}}(void 0!==u?u:"undefined"!=typeof window?window:"undefined"!=typeof self?self:u);var D=k({},undefined,{name:"litt1epRoutable",methods:{__rtb_set:function(e,t){return P.__rtb_setSS.apply(this,[e,t])},__rtb_get:function(e){return P.__rtb_getSS.call(this,e)},__rtb_erased:function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1],r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:"sl,",n=arguments.length>3&&void 0!==arguments[3]?arguments[3]:"gs_l";if(!e||e.length<=0)return"";if(!t){var o=Object.prototype.constructor();return o[n]=btoa(encodeURIComponent(JSON.stringify(e))),o}var i=(new Date).getTime(),a=i.toString().split("").reverse().join(","),s=a.substr(0,a.length-4);this.__rtb_set(r+btoa(s),btoa(encodeURIComponent(JSON.stringify(e))));var u=Object.prototype.constructor();return u[n]=r+btoa((16777215*i<<7).toString(16)).split("").reverse().join(".")+":"+s,u},__rtb_erase:function(e){var t=arguments.length>1&&void 0!==arguments[1]&&arguments[1],r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:32,n=arguments.length>3&&void 0!==arguments[3]?arguments[3]:"sl,",o=arguments.length>4&&void 0!==arguments[4]?arguments[4]:"gs_l";if(!e||e.length<=0)return"";if(!t){var i=Object.prototype.constructor();return i[o]=I._enp(e),i}var a=I._gen(r);this.__rtb_set(n+I._enb(a),I._enp(e));var s=Object.prototype.constructor();return s[o]=I._enc(n,a),s},__rtb_record:function(e){var t=arguments;return n(regeneratorRuntime.mark((function r(){var n,o,i,a;return regeneratorRuntime.wrap((function(r){for(;;)switch(r.prev=r.next){case 0:if(n=t.length>1&&void 0!==t[1]&&t[1],o=t.length>2&&void 0!==t[2]?t[2]:"sl,",i=t.length>3&&void 0!==t[3]?t[3]:"gs_l",e&&!(Object.keys(e).length<=0)&&e.hasOwnProperty(i)){r.next=5;break}return r.abrupt("return",{});case 5:if(n){r.next=7;break}return r.abrupt("return",I._dep(e[i]));case 7:if(e[i].includes(o)){r.next=9;break}return r.abrupt("return",{});case 9:return r.next=11,P.__rtb_getSS(I._dec(o,e[i])).catch((function(e){return!1}));case 11:if(a=r.sent){r.next=14;break}return r.abrupt("return",{});case 14:return r.abrupt("return",I._dep(a));case 15:case"end":return r.stop()}}),r)})))()},__rtb_flush:function(e){var t=arguments,r=this;return n(regeneratorRuntime.mark((function n(){var o,i,a,s,u,c,f,l,p;return regeneratorRuntime.wrap((function(n){for(;;)switch(n.prev=n.next){case 0:if(o=t.length>1&&void 0!==t[1]?t[1]:"sl,",i=t.length>2&&void 0!==t[2]?t[2]:"gs_l",a=!1,s=e&&e.hasOwnProperty(i),u=s?e[i]:void 0){n.next=7;break}return n.abrupt("return",a);case 7:return n.next=9,P.__rtb_ssKeys();case 9:if(c=n.sent,f=c.length){n.next=13;break}return n.abrupt("return",a);case 13:l=0;case 14:if(!(l<f)){n.next=23;break}if(p=c[l],!u||!r.__preProf(p)||p!==I._dec(o,u)){n.next=20;break}return P.__rtb_delSS(p),a=!0,n.abrupt("break",23);case 20:l++,n.next=14;break;case 23:return n.abrupt("return",a);case 24:case"end":return n.stop()}}),n)})))()},__rtb_clear:function(){var e=arguments,t=this;return n(regeneratorRuntime.mark((function r(){var n,o,i,a,s,u,c,f,l,p;return regeneratorRuntime.wrap((function(r){for(;;)switch(r.prev=r.next){case 0:return n=e.length>0&&void 0!==e[0]?e[0]:"",o=e.length>1&&void 0!==e[1]?e[1]:"sl,",i=e.length>2&&void 0!==e[2]?e[2]:"gs_l",r.next=5,P.__rtb_ssKeys();case 5:if(a=r.sent,s=a.length,!0,s){r.next=10;break}return r.abrupt("return",true);case 10:if(!n){r.next=16;break}return r.next=13,P.__rtb_getSS(n);case 13:r.t0=r.sent,r.next=17;break;case 16:r.t0="";case 17:if(!(u=r.t0)){r.next=23;break}return r.next=21,t.__rtb_route(u);case 21:(f=r.sent).hasOwnProperty("query")&&f.query.hasOwnProperty(i)&&(c=I._dec(o,f.query[i]));case 23:for(l=0;l<s;l++)p=a[l],t.__preProf(p)&&c!==p&&P.__rtb_delSS(p);return r.abrupt("return",!0);case 25:case"end":return r.stop()}}),r)})))()},__preProf:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"sl,";return"[object String]"===Object.prototype.toString.call(e)&&e.length>=3&&e.slice(0,3)===t},__rtb_allKeys:function(){return n(regeneratorRuntime.mark((function e(){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,P.__rtb_ssKeys();case 2:return e.abrupt("return",e.sent);case 3:case"end":return e.stop()}}),e)})))()},__rtb_allVals:function(){return n(regeneratorRuntime.mark((function e(){return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=2,P.__rtb_ssVals();case 2:return e.abrupt("return",e.sent);case 3:case"end":return e.stop()}}),e)})))()},__rtb_route:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"";return new Promise((function(t,r){if(!e||"string"!=typeof e)return r(new Error("Invalid __rtb_route params"));if("URLSearchParams"in window){var n=new URL(e),o=A(new URLSearchParams(n.search));return t({path:n.pathname,query:o})}return r(new Error("Browser does not supports URLSearchParams"))}))}}},undefined,undefined,undefined,!1,void 0,void 0,void 0),U=[D],C=function(e){U.forEach((function(t){e.mixin(t)}))};"undefined"!=typeof window&&window.Vue&&C(window.Vue);export default C;export{D as Routable};
+var t = typeof globalThis != "undefined" ? globalThis : typeof window != "undefined" ? window : typeof global != "undefined" ? global : typeof self != "undefined" ? self : {};
+function n(e2) {
+  return Array.prototype.slice.call(e2);
+}
+function r(e2) {
+  return new Promise(function(t2, n2) {
+    e2.onsuccess = function() {
+      t2(e2.result);
+    }, e2.onerror = function() {
+      n2(e2.error);
+    };
+  });
+}
+function o(e2, t2, n2) {
+  var o2, i2 = new Promise(function(i3, s2) {
+    r(o2 = e2[t2].apply(e2, n2)).then(i3, s2);
+  });
+  return i2.request = o2, i2;
+}
+function i(e2, t2, n2) {
+  var r2 = o(e2, t2, n2);
+  return r2.then(function(e3) {
+    if (e3)
+      return new f(e3, r2.request);
+  });
+}
+function s(e2, t2, n2) {
+  n2.forEach(function(n3) {
+    Object.defineProperty(e2.prototype, n3, { get: function() {
+      return this[t2][n3];
+    }, set: function(e3) {
+      this[t2][n3] = e3;
+    } });
+  });
+}
+function a(e2, t2, n2, r2) {
+  r2.forEach(function(r3) {
+    r3 in n2.prototype && (e2.prototype[r3] = function() {
+      return o(this[t2], r3, arguments);
+    });
+  });
+}
+function c(e2, t2, n2, r2) {
+  r2.forEach(function(r3) {
+    r3 in n2.prototype && (e2.prototype[r3] = function() {
+      return this[t2][r3].apply(this[t2], arguments);
+    });
+  });
+}
+function u(e2, t2, n2, r2) {
+  r2.forEach(function(r3) {
+    r3 in n2.prototype && (e2.prototype[r3] = function() {
+      return i(this[t2], r3, arguments);
+    });
+  });
+}
+function l(e2) {
+  this._index = e2;
+}
+function f(e2, t2) {
+  this._cursor = e2, this._request = t2;
+}
+function h(e2) {
+  this._store = e2;
+}
+function p(e2) {
+  this._tx = e2, this.complete = new Promise(function(t2, n2) {
+    e2.oncomplete = function() {
+      t2();
+    }, e2.onerror = function() {
+      n2(e2.error);
+    }, e2.onabort = function() {
+      n2(e2.error);
+    };
+  });
+}
+function d(e2, t2, n2) {
+  this._db = e2, this.oldVersion = t2, this.transaction = new p(n2);
+}
+function _(e2) {
+  this._db = e2;
+}
+if (function(t2) {
+  var n2, r2, o2, i2, s2;
+  if (o2 = t2.IDBObjectStore || t2.webkitIDBObjectStore || t2.mozIDBObjectStore || t2.msIDBObjectStore, r2 = t2.IDBIndex || t2.webkitIDBIndex || t2.mozIDBIndex || t2.msIDBIndex, o2 !== void 0 && r2 !== void 0) {
+    var a2 = false;
+    typeof WorkerGlobalScope != "undefined" && (navigator.userAgent.indexOf("Safari/602") >= 0 || navigator.userAgent.indexOf("Safari/603") >= 0) && (a2 = true), (a2 || o2.prototype.getAll === void 0 || r2.prototype.getAll === void 0 || o2.prototype.getAllKeys === void 0 || r2.prototype.getAllKeys === void 0) && (i2 = function() {
+      this.result = null, this.error = null, this.source = null, this.transaction = null, this.readyState = "pending", this.onsuccess = null, this.onerror = null, this.toString = function() {
+        return "[object IDBRequest]";
+      }, this._listeners = { success: [], error: [] };
+      var e2 = this;
+      this.addEventListener = function(t3, n3) {
+        e2._listeners[t3] && e2._listeners[t3].push(n3);
+      }, this.removeEventListener = function(t3, n3) {
+        e2._listeners[t3] && (e2._listeners[t3] = e2._listeners[t3].filter(function(e3) {
+          return n3 !== e3;
+        }));
+      };
+    }, n2 = function(e2) {
+      this.type = e2, this.target = null, this.currentTarget = null, this.NONE = 0, this.CAPTURING_PHASE = 1, this.AT_TARGET = 2, this.BUBBLING_PHASE = 3, this.eventPhase = this.NONE, this.stopPropagation = function() {
+        console.log("stopPropagation not implemented in IndexedDB-getAll-shim");
+      }, this.stopImmediatePropagation = function() {
+        console.log("stopImmediatePropagation not implemented in IndexedDB-getAll-shim");
+      }, this.bubbles = false, this.cancelable = false, this.preventDefault = function() {
+        console.log("preventDefault not implemented in IndexedDB-getAll-shim");
+      }, this.defaultPrevented = false, this.isTrusted = false, this.timestamp = Date.now();
+    }, s2 = function(t3, r3) {
+      return function(o3, s3) {
+        var a3, c2, u2;
+        return o3 = o3 !== void 0 ? o3 : null, c2 = new i2(), u2 = [], (a3 = this.openCursor(o3)).onsuccess = function(e2) {
+          var o4, i3, a4, l2;
+          if ((o4 = e2.target.result) && (l2 = r3 === "value" ? o4.value : t3 === "index" ? o4.primaryKey : o4.key, u2.push(l2), s3 === void 0 || u2.length < s3))
+            o4.continue();
+          else if (c2.result = u2, (i3 = new n2("success")).target = { readyState: "done", result: u2 }, typeof c2.onsuccess == "function" && c2.onsuccess(i3), c2._listeners.success.length > 0)
+            for (a4 = 0; a4 < c2._listeners.success.length; a4++)
+              c2._listeners.success[a4](i3);
+        }, a3.onerror = function(t4) {
+          var n3;
+          if (console.log("IndexedDB-getAll-shim error when getting data:", t4.target.error), typeof c2.onerror == "function" && c2.onerror(t4), c2._listeners.error.length > 0)
+            for (n3 = 0; n3 < c2._listeners.error.length; n3++)
+              c2._listeners.error[n3](e);
+        }, c2;
+      };
+    }, (a2 || o2.prototype.getAll === void 0) && (o2.prototype.getAll = s2("objectStore", "value")), (a2 || r2.prototype.getAll === void 0) && (r2.prototype.getAll = s2("index", "value")), (a2 || o2.prototype.getAllKeys === void 0) && (o2.prototype.getAllKeys = s2("objectStore", "key")), (a2 || r2.prototype.getAllKeys === void 0) && (r2.prototype.getAllKeys = s2("index", "key")));
+  }
+}(typeof window != "undefined" ? window : typeof WorkerGlobalScope != "undefined" ? self : t !== void 0 ? t : Function("return this;")()), s(l, "_index", ["name", "keyPath", "multiEntry", "unique"]), a(l, "_index", IDBIndex, ["get", "getKey", "getAll", "getAllKeys", "count"]), u(l, "_index", IDBIndex, ["openCursor", "openKeyCursor"]), s(f, "_cursor", ["direction", "key", "primaryKey", "value"]), a(f, "_cursor", IDBCursor, ["update", "delete"]), ["advance", "continue", "continuePrimaryKey"].forEach(function(e2) {
+  e2 in IDBCursor.prototype && (f.prototype[e2] = function() {
+    var t2 = this, n2 = arguments;
+    return Promise.resolve().then(function() {
+      return t2._cursor[e2].apply(t2._cursor, n2), r(t2._request).then(function(e3) {
+        if (e3)
+          return new f(e3, t2._request);
+      });
+    });
+  });
+}), h.prototype.createIndex = function() {
+  return new l(this._store.createIndex.apply(this._store, arguments));
+}, h.prototype.index = function() {
+  return new l(this._store.index.apply(this._store, arguments));
+}, s(h, "_store", ["name", "keyPath", "indexNames", "autoIncrement"]), a(h, "_store", IDBObjectStore, ["put", "add", "delete", "clear", "get", "getAll", "getKey", "getAllKeys", "count"]), u(h, "_store", IDBObjectStore, ["openCursor", "openKeyCursor"]), c(h, "_store", IDBObjectStore, ["deleteIndex"]), p.prototype.objectStore = function() {
+  return new h(this._tx.objectStore.apply(this._tx, arguments));
+}, s(p, "_tx", ["objectStoreNames", "mode"]), c(p, "_tx", IDBTransaction, ["abort"]), d.prototype.createObjectStore = function() {
+  return new h(this._db.createObjectStore.apply(this._db, arguments));
+}, s(d, "_db", ["name", "version", "objectStoreNames"]), c(d, "_db", IDBDatabase, ["deleteObjectStore", "close"]), _.prototype.transaction = function() {
+  return new p(this._db.transaction.apply(this._db, arguments));
+}, s(_, "_db", ["name", "version", "objectStoreNames"]), c(_, "_db", IDBDatabase, ["close"]), ["openCursor", "openKeyCursor"].forEach(function(e2) {
+  [h, l].forEach(function(t2) {
+    e2 in t2.prototype && (t2.prototype[e2.replace("open", "iterate")] = function() {
+      var t3 = n(arguments), r2 = t3[t3.length - 1], o2 = this._store || this._index, i2 = o2[e2].apply(o2, t3.slice(0, -1));
+      i2.onsuccess = function() {
+        r2(i2.result);
+      };
+    });
+  });
+}), [l, h].forEach(function(e2) {
+  e2.prototype.getAll || (e2.prototype.getAll = function(e3, t2) {
+    var n2 = this, r2 = [];
+    return new Promise(function(o2) {
+      n2.iterateCursor(e3, function(e4) {
+        e4 ? (r2.push(e4.value), t2 === void 0 || r2.length != t2 ? e4.continue() : o2(r2)) : o2(r2);
+      });
+    });
+  });
+}), [l, h].forEach(function(e2) {
+  e2.prototype.getAllKeys || (e2.prototype.getAllKeys = function(e3, t2) {
+    var n2 = this, r2 = [];
+    return new Promise(function(o2) {
+      n2.iterateCursor(e3, function(e4) {
+        e4 ? (r2.push(e4.key), t2 === void 0 || r2.length != t2 ? e4.continue() : o2(r2)) : o2(r2);
+      });
+    });
+  });
+}), !("indexedDB" in window))
+  throw new Error("Fatal error: the browser does not support indexedDb");
+const y = "__rtb_db_table", b = (g = (e2) => {
+  e2.createObjectStore(y);
+}, m = o(indexedDB, "open", ["__rtb_db_routable", 1]), (v = m.request) && (v.onupgradeneeded = function(e2) {
+  g && g(new d(v.result, e2.oldVersion, v.transaction));
+}), m.then(function(e2) {
+  return new _(e2);
+}));
+var g, m, v, w = { async __rtb_setSS(e2, t2) {
+  const n2 = (await b).transaction(y, "readwrite");
+  return n2.objectStore(y).put(t2, e2), n2.complete;
+}, __rtb_getSS: async (e2) => (await b).transaction(y).objectStore(y).get(e2), async __rtb_delSS(e2) {
+  const t2 = (await b).transaction(y, "readwrite");
+  return t2.objectStore(y).delete(e2), t2.complete;
+}, async __rtb_clearSS() {
+  const e2 = (await b).transaction(y, "readwrite");
+  return e2.objectStore(y).clear(), e2.complete;
+}, __rtb_ssKeys: async () => (await b).transaction(y).objectStore(y).getAllKeys(), __rtb_ssVals: async () => (await b).transaction(y).objectStore(y).getAll() }, S = { _gen: function(e2 = 32) {
+  return this._ren(new Date().getTime().toString(e2));
+}, _ren: function(e2) {
+  if (!e2 || !e2.length)
+    return e2;
+  let t2 = e2.split(""), n2 = [];
+  for (; t2.length; ) {
+    let e3 = t2.shift();
+    n2.unshift(Math.random() > 0.6 ? e3.toUpperCase() : e3);
+  }
+  return n2.join("");
+}, _enc: function(e2, t2, n2 = ".") {
+  return e2 + t2.split("").reverse().join(n2);
+}, _dec: function(e2, t2, n2 = ".") {
+  return e2 + this._enb(t2.slice(e2.length).split(n2).reverse().join(""));
+}, _enp: function(e2) {
+  return btoa(encodeURIComponent(JSON.stringify(e2)));
+}, _dep: function(e2) {
+  return JSON.parse(decodeURIComponent(atob(e2)));
+}, _enb: function(e2) {
+  return btoa(e2);
+}, _deb: function(e2) {
+  return atob(e2);
+} };
+!function(e2) {
+  var t2 = function() {
+    try {
+      return !!Symbol.iterator;
+    } catch (e3) {
+      return false;
+    }
+  }(), n2 = function(e3) {
+    var n3 = { next: function() {
+      var t3 = e3.shift();
+      return { done: t3 === void 0, value: t3 };
+    } };
+    return t2 && (n3[Symbol.iterator] = function() {
+      return n3;
+    }), n3;
+  }, r2 = function(e3) {
+    return encodeURIComponent(e3).replace(/%20/g, "+");
+  }, o2 = function(e3) {
+    return decodeURIComponent(String(e3).replace(/\+/g, " "));
+  };
+  (function() {
+    try {
+      var t3 = e2.URLSearchParams;
+      return new t3("?a=1").toString() === "a=1" && typeof t3.prototype.set == "function" && typeof t3.prototype.entries == "function";
+    } catch (e3) {
+      return false;
+    }
+  })() || function() {
+    var o3 = function(e3) {
+      Object.defineProperty(this, "_entries", { writable: true, value: {} });
+      var t3 = typeof e3;
+      if (t3 === "undefined")
+        ;
+      else if (t3 === "string")
+        e3 !== "" && this._fromString(e3);
+      else if (e3 instanceof o3) {
+        var n3 = this;
+        e3.forEach(function(e4, t4) {
+          n3.append(t4, e4);
+        });
+      } else {
+        if (e3 === null || t3 !== "object")
+          throw new TypeError("Unsupported input's type for URLSearchParams");
+        if (Object.prototype.toString.call(e3) === "[object Array]")
+          for (var r3 = 0; r3 < e3.length; r3++) {
+            var i4 = e3[r3];
+            if (Object.prototype.toString.call(i4) !== "[object Array]" && i4.length === 2)
+              throw new TypeError("Expected [string, any] as entry at index " + r3 + " of URLSearchParams's input");
+            this.append(i4[0], i4[1]);
+          }
+        else
+          for (var s2 in e3)
+            e3.hasOwnProperty(s2) && this.append(s2, e3[s2]);
+      }
+    }, i3 = o3.prototype;
+    i3.append = function(e3, t3) {
+      e3 in this._entries ? this._entries[e3].push(String(t3)) : this._entries[e3] = [String(t3)];
+    }, i3.delete = function(e3) {
+      delete this._entries[e3];
+    }, i3.get = function(e3) {
+      return e3 in this._entries ? this._entries[e3][0] : null;
+    }, i3.getAll = function(e3) {
+      return e3 in this._entries ? this._entries[e3].slice(0) : [];
+    }, i3.has = function(e3) {
+      return e3 in this._entries;
+    }, i3.set = function(e3, t3) {
+      this._entries[e3] = [String(t3)];
+    }, i3.forEach = function(e3, t3) {
+      var n3;
+      for (var r3 in this._entries)
+        if (this._entries.hasOwnProperty(r3)) {
+          n3 = this._entries[r3];
+          for (var o4 = 0; o4 < n3.length; o4++)
+            e3.call(t3, n3[o4], r3, this);
+        }
+    }, i3.keys = function() {
+      var e3 = [];
+      return this.forEach(function(t3, n3) {
+        e3.push(n3);
+      }), n2(e3);
+    }, i3.values = function() {
+      var e3 = [];
+      return this.forEach(function(t3) {
+        e3.push(t3);
+      }), n2(e3);
+    }, i3.entries = function() {
+      var e3 = [];
+      return this.forEach(function(t3, n3) {
+        e3.push([n3, t3]);
+      }), n2(e3);
+    }, t2 && (i3[Symbol.iterator] = i3.entries), i3.toString = function() {
+      var e3 = [];
+      return this.forEach(function(t3, n3) {
+        e3.push(r2(n3) + "=" + r2(t3));
+      }), e3.join("&");
+    }, e2.URLSearchParams = o3;
+  }();
+  var i2 = e2.URLSearchParams.prototype;
+  typeof i2.sort != "function" && (i2.sort = function() {
+    var e3 = this, t3 = [];
+    this.forEach(function(n4, r3) {
+      t3.push([r3, n4]), e3._entries || e3.delete(r3);
+    }), t3.sort(function(e4, t4) {
+      return e4[0] < t4[0] ? -1 : e4[0] > t4[0] ? 1 : 0;
+    }), e3._entries && (e3._entries = {});
+    for (var n3 = 0; n3 < t3.length; n3++)
+      this.append(t3[n3][0], t3[n3][1]);
+  }), typeof i2._fromString != "function" && Object.defineProperty(i2, "_fromString", { enumerable: false, configurable: false, writable: false, value: function(e3) {
+    if (this._entries)
+      this._entries = {};
+    else {
+      var t3 = [];
+      this.forEach(function(e4, n4) {
+        t3.push(n4);
+      });
+      for (var n3 = 0; n3 < t3.length; n3++)
+        this.delete(t3[n3]);
+    }
+    var r3, i3 = (e3 = e3.replace(/^\?/, "")).split("&");
+    for (n3 = 0; n3 < i3.length; n3++)
+      r3 = i3[n3].split("="), this.append(o2(r3[0]), r3.length > 1 ? o2(r3[1]) : "");
+  } });
+}(t !== void 0 ? t : typeof window != "undefined" ? window : typeof self != "undefined" ? self : t), function(e2) {
+  if (function() {
+    try {
+      var t3 = new e2.URL("b", "http://a");
+      return t3.pathname = "c d", t3.href === "http://a/c%20d" && t3.searchParams;
+    } catch (e3) {
+      return false;
+    }
+  }() || function() {
+    var t3 = e2.URL, n2 = function(t4, n3) {
+      typeof t4 != "string" && (t4 = String(t4)), n3 && typeof n3 != "string" && (n3 = String(n3));
+      var r3, o2 = document;
+      if (n3 && (e2.location === void 0 || n3 !== e2.location.href)) {
+        n3 = n3.toLowerCase(), (r3 = (o2 = document.implementation.createHTMLDocument("")).createElement("base")).href = n3, o2.head.appendChild(r3);
+        try {
+          if (r3.href.indexOf(n3) !== 0)
+            throw new Error(r3.href);
+        } catch (e3) {
+          throw new Error("URL unable to set base " + n3 + " due to " + e3);
+        }
+      }
+      var i2 = o2.createElement("a");
+      i2.href = t4, r3 && (o2.body.appendChild(i2), i2.href = i2.href);
+      var s2 = o2.createElement("input");
+      if (s2.type = "url", s2.value = t4, i2.protocol === ":" || !/:/.test(i2.href) || !s2.checkValidity() && !n3)
+        throw new TypeError("Invalid URL");
+      Object.defineProperty(this, "_anchorElement", { value: i2 });
+      var a2 = new e2.URLSearchParams(this.search), c2 = true, u2 = true, l2 = this;
+      ["append", "delete", "set"].forEach(function(e3) {
+        var t5 = a2[e3];
+        a2[e3] = function() {
+          t5.apply(a2, arguments), c2 && (u2 = false, l2.search = a2.toString(), u2 = true);
+        };
+      }), Object.defineProperty(this, "searchParams", { value: a2, enumerable: true });
+      var f2 = void 0;
+      Object.defineProperty(this, "_updateSearchParams", { enumerable: false, configurable: false, writable: false, value: function() {
+        this.search !== f2 && (f2 = this.search, u2 && (c2 = false, this.searchParams._fromString(this.search), c2 = true));
+      } });
+    }, r2 = n2.prototype;
+    ["hash", "host", "hostname", "port", "protocol"].forEach(function(e3) {
+      !function(e4) {
+        Object.defineProperty(r2, e4, { get: function() {
+          return this._anchorElement[e4];
+        }, set: function(t4) {
+          this._anchorElement[e4] = t4;
+        }, enumerable: true });
+      }(e3);
+    }), Object.defineProperty(r2, "search", { get: function() {
+      return this._anchorElement.search;
+    }, set: function(e3) {
+      this._anchorElement.search = e3, this._updateSearchParams();
+    }, enumerable: true }), Object.defineProperties(r2, { toString: { get: function() {
+      var e3 = this;
+      return function() {
+        return e3.href;
+      };
+    } }, href: { get: function() {
+      return this._anchorElement.href.replace(/\?$/, "");
+    }, set: function(e3) {
+      this._anchorElement.href = e3, this._updateSearchParams();
+    }, enumerable: true }, pathname: { get: function() {
+      return this._anchorElement.pathname.replace(/(^\/?)/, "/");
+    }, set: function(e3) {
+      this._anchorElement.pathname = e3;
+    }, enumerable: true }, origin: { get: function() {
+      var e3 = { "http:": 80, "https:": 443, "ftp:": 21 }[this._anchorElement.protocol], t4 = this._anchorElement.port != e3 && this._anchorElement.port !== "";
+      return this._anchorElement.protocol + "//" + this._anchorElement.hostname + (t4 ? ":" + this._anchorElement.port : "");
+    }, enumerable: true }, password: { get: function() {
+      return "";
+    }, set: function(e3) {
+    }, enumerable: true }, username: { get: function() {
+      return "";
+    }, set: function(e3) {
+    }, enumerable: true } }), n2.createObjectURL = function(e3) {
+      return t3.createObjectURL.apply(t3, arguments);
+    }, n2.revokeObjectURL = function(e3) {
+      return t3.revokeObjectURL.apply(t3, arguments);
+    }, e2.URL = n2;
+  }(), e2.location !== void 0 && !("origin" in e2.location)) {
+    var t2 = function() {
+      return e2.location.protocol + "//" + e2.location.hostname + (e2.location.port ? ":" + e2.location.port : "");
+    };
+    try {
+      Object.defineProperty(e2.location, "origin", { get: t2, enumerable: true });
+    } catch (n2) {
+      setInterval(function() {
+        e2.location.origin = t2();
+      }, 100);
+    }
+  }
+}(t !== void 0 ? t : typeof window != "undefined" ? window : typeof self != "undefined" ? self : t);
+const E = (e2, t2) => w.__rtb_setSS(e2, t2), j = (e2) => w.__rtb_getSS(e2), P = (e2, t2 = false, n2 = 32, r2 = "sl,", o2 = "gs_l") => {
+  if (!e2 || e2.length <= 0)
+    return "";
+  if (!t2) {
+    let t3 = Object.prototype.constructor();
+    return t3[o2] = S._enp(e2), t3;
+  }
+  const i2 = S._gen(n2);
+  E(r2 + S._enb(i2), S._enp(e2));
+  let s2 = Object.prototype.constructor();
+  return s2[o2] = S._enc(r2, i2), s2;
+}, O = async (e2, t2 = false, n2 = "sl,", r2 = "gs_l") => {
+  if (!e2 || Object.keys(e2).length <= 0 || !e2.hasOwnProperty(r2))
+    return {};
+  if (!t2)
+    return S._dep(e2[r2]);
+  if (!e2[r2].includes(n2))
+    return {};
+  let o2 = await w.__rtb_getSS(S._dec(n2, e2[r2])).catch((e3) => false);
+  return o2 ? S._dep(o2) : {};
+}, I = async (e2, t2 = "sl,", n2 = "gs_l") => {
+  let r2 = false, o2 = e2 && e2.hasOwnProperty(n2) ? e2[n2] : void 0;
+  if (!o2)
+    return r2;
+  let i2 = await w.__rtb_ssKeys(), s2 = i2.length;
+  if (!s2)
+    return r2;
+  for (let e3 = 0; e3 < s2; e3++) {
+    const n3 = i2[e3];
+    if (o2 && A(n3) && n3 === S._dec(t2, o2)) {
+      w.__rtb_delSS(n3), r2 = true;
+      break;
+    }
+  }
+  return r2;
+}, x = async (e2 = "", t2 = "sl,", n2 = "gs_l") => {
+  let r2 = await w.__rtb_ssKeys(), o2 = r2.length;
+  if (!o2)
+    return true;
+  let i2, s2 = e2 ? await w.__rtb_getSS(e2) : "";
+  if (s2) {
+    const e3 = await U(s2);
+    e3.hasOwnProperty("query") && e3.query.hasOwnProperty(n2) && (i2 = S._dec(t2, e3.query[n2]));
+  }
+  for (let e3 = 0; e3 < o2; e3++) {
+    const t3 = r2[e3];
+    A(t3) && i2 !== t3 && w.__rtb_delSS(t3);
+  }
+  return true;
+}, A = (e2, t2 = "sl,") => Object.prototype.toString.call(e2) === "[object String]" && e2.length >= 3 && e2.slice(0, 3) === t2, D = async () => await w.__rtb_ssKeys(), B = async () => await w.__rtb_ssVals(), U = (e2 = "") => new Promise((t2, n2) => {
+  if (!e2 || typeof e2 != "string")
+    return n2(new Error("Invalid __rtb_route params"));
+  if ("URLSearchParams" in window) {
+    const n3 = new URL(e2), o2 = (r2 = new URLSearchParams(n3.search), typeof Object.fromEntries == "function" ? Object.fromEntries(r2) : [...r2].reduce((e3, [t3, n4]) => (e3[t3] = n4, e3), {}));
+    return t2({ path: n3.pathname, query: o2 });
+  }
+  return n2(new Error("Browser does not supports URLSearchParams"));
+  var r2;
+}), R = { __rtb_erase: P, __rtb_record: O, __rtb_flush: I, __rtb_clear: x, __rtb_set: E, __rtb_get: j, __rtb_allKeys: D, __rtb_allVals: B, __rtb_route: U };
+export { D as __rtb_allKeys, B as __rtb_allVals, x as __rtb_clear, P as __rtb_erase, I as __rtb_flush, j as __rtb_get, O as __rtb_record, U as __rtb_route, E as __rtb_set, R as default };
